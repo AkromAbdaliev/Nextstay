@@ -84,7 +84,7 @@ A modern, production-ready hotel booking management system built with FastAPI. N
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/AkromAbdaliev/Nextstay
 cd Nextstay
 ```
 
