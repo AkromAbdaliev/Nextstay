@@ -1,0 +1,119 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-wheel-metadata/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+.venv/*
+venv.bak/
+
+# Environment / secret files
+.env
+.env.*
+.env.local
+local_settings.py
+instance/
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Pytest cache
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# pyre
+.pyre/
+
+# celery
+celerybeat-schedule
+celerybeat.pid
+
+# Logs
+*.log
+logs/
+*.pid
+
+# Database
+*.db
+*.sqlite3
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Packaging
+*.7z
+*.gz
+*.zip
+*.tar
+
+# Wheel / egg
+*.whl
+
+# Build tools
+.tox/
+.coverage
+htmlcov/
+
+# Secrets and keys
+*.pem
+*.key
+
+# Misc
+.python-version
+
+# Ignore compiled assets and caches
+__pypackages__/
+
+# Ignore pipenv and poetry virtual envs
+.pipenv/
+.poetry/
+
+# Ignore test output
+test-results/
+
+# JetBrains
+.idea/
+
+# Optional: ignore node modules if present
+node_modules/
