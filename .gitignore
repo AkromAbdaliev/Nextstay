@@ -117,3 +117,4 @@ test-results/
 
 # Optional: ignore node modules if present
 node_modules/
+pip

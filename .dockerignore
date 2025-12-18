@@ -1,0 +1,57 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Environment / secret files
+.env
+.env.*
+local_settings.py
+instance/
+
+# Test / cache
+.pytest_cache/
+.mypy_cache/
+.tox/
+.cache/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Databases / SQLite
+*.db
+*.sqlite3
+
+# Editor / IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Node (if present)
+node_modules/
+
+# Misc
+.python-version
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid

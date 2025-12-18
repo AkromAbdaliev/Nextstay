@@ -4,7 +4,6 @@ from pydantic import BaseModel, ConfigDict, EmailStr
 class SUserRegister(BaseModel):
     email: EmailStr
     password: str
-    model_config = ConfigDict(from_attributes=True)
 
 
 class SUserRead(BaseModel):
@@ -16,4 +15,3 @@ class SUserRead(BaseModel):
 class SUserUpdate(BaseModel):
     email: EmailStr | None = None
     password: str | None = None
-    model_config = ConfigDict(from_attributes=True)

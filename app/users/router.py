@@ -22,11 +22,9 @@ async def register_user(user_data: SUserRegister):
     if existing_user:
         raise UserAlreadyExistsException
     hashed_password = get_password_hash(user_data.password)
-    new_user = await UsersService.add_one(
+    return await UsersService.add_one(
         email=user_data.email, hashed_password=hashed_password
     )
-
-    return SUserRead.model_validate(new_user)
 
 
 @router.post("/login")
@@ -53,8 +51,7 @@ async def get_me(current_user: SUserRead = Depends(get_current_user)):
 
 @router.get("/users", response_model=list[SUserRead])
 async def get_users():
-    users = await UsersService.find_all()
-    return [SUserRead.model_validate(user) for user in users]
+    return await UsersService.find_all()
 
 
 @router.get("/users/{user_id}", response_model=SUserRead)
@@ -63,7 +60,7 @@ async def get_user(user_id: int):
     if not user:
         raise UserNotFoundException
 
-    return SUserRead.model_validate(user)
+    return user
 
 
 @router.post("/users", response_model=SUserRead, status_code=status.HTTP_201_CREATED)
@@ -94,8 +91,7 @@ async def update_user(user_id: int, user_data: SUserUpdate):
     if user_data.password is not None:
         update_fields["hashed_password"] = get_password_hash(user_data.password)
 
-    updated_user = await UsersService.update_one(user, **update_fields)
-    return SUserRead.model_validate(updated_user)
+    return await UsersService.update_one(user, **update_fields)
 
 
 @router.delete("/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -103,5 +99,4 @@ async def delete_user(user_id: int):
     user = await UsersService.find_by_id(user_id)
     if not user:
         raise UserNotFoundException
-    await UsersService.delete_one(user)
-    return
+    return await UsersService.delete_one(user)
