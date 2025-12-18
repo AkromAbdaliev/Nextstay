@@ -25,8 +25,9 @@ async def get_booking(
     booking_id: int, user: SUserRead = Depends(get_current_user)
 ) -> SBookingsRead:
     booking = await BookingsService.find_by_id(booking_id)
-    if booking and booking.user_id == user.id:
-        return SBookingsRead.model_validate(booking)
+    if not booking or booking.user_id != user.id:
+        raise BookingNotFoundException
+    return booking
 
 
 @router.post("", response_model=SBookingsRead)
@@ -54,7 +55,7 @@ async def update_booking(
         existing_booking, **booking_data.model_dump()
     )
     await FastAPICache.clear()
-    return SBookingsRead.model_validate(updated_booking)
+    return updated_booking
 
 
 @router.delete("/{booking_id}", status_code=status.HTTP_204_NO_CONTENT)

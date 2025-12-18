@@ -17,7 +17,7 @@ async def get_hotel(hotel_id: int):
     hotel = await HotelsService.find_by_id(hotel_id)
     if not hotel:
         raise HotelNotFoundException
-    return SHotels.model_validate(hotel)
+    return hotel
 
 
 @router.post("/", response_model=SHotels)
@@ -31,8 +31,7 @@ async def update_hotel(hotel_id: int, hotel: SHotels):
     if not existing_hotel:
         raise HotelNotFoundException
 
-    update_hotel = await HotelsService.update_one(existing_hotel, **hotel.model_dump())
-    return SHotels.model_validate(update_hotel)
+    return await HotelsService.update_one(existing_hotel, **hotel.model_dump())
 
 
 @router.delete("/{hotel_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -40,4 +39,4 @@ async def delete_one(hotel_id: int):
     existing_hotel = await HotelsService.find_by_id(hotel_id)
     if not existing_hotel:
         raise HotelNotFoundException
-    await HotelsService.delete_one(existing_hotel)
+    return await HotelsService.delete_one(existing_hotel)

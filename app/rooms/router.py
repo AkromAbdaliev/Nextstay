@@ -46,7 +46,7 @@ async def update_room(room_id: int, room: SRooms):
 
     updated_room = await RoomsService.update_one(existing_room, **room.model_dump())
     await FastAPICache.clear()
-    return SRooms.model_validate(updated_room)
+    return updated_room
 
 
 @router.delete("/{room_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -56,3 +56,4 @@ async def delete_room(room_id: int):
         raise RoomNotFoundException
     await RoomsService.delete_one(existing_room)
     await FastAPICache.clear()
+    return
